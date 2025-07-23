@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>大模型科普与技术解析</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
             theme: {
@@ -41,24 +41,26 @@
             }
         }
     </style>
+
 </head>
 <body class="bg-gray-50 text-dark">
     <!-- 导航栏 -->
-    <nav class="sticky top-0 z-50 bg-white shadow-md">
+    <nav class="sticky top-0 z-50 bg-white shadow-md relative">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <i class="fa fa-brain text-primary text-2xl"></i>
                 <span class="text-xl font-bold text-primary">大模型科普站</span>
             </div>
-            <div class="hidden md:flex space-x-8">
+            <div id="mobile-menu" class="hidden md:flex space-x-8">
                 <a href="#introduction" class="font-medium hover:text-primary transition-colors">简介</a>
                 <a href="#basics" class="font-medium hover:text-primary transition-colors">基础知识</a>
                 <a href="#technologies" class="font-medium hover:text-primary transition-colors">核心技术</a>
                 <a href="#applications" class="font-medium hover:text-primary transition-colors">应用场景</a>
                 <a href="#resources" class="font-medium hover:text-primary transition-colors">学习资源</a>
+                <a href="#videos" class="font-medium hover:text-primary transition-colors">推荐视频</a>
             </div>
-            <button class="md:hidden text-dark">
-                <i class="fa fa-bars text-xl"></i>
+            <button class="md:hidden text-dark" id="mobile-menu-button" onclick="toggleMobileMenu()">
+                  <i class="fas fa-bars text-xl"></i>
             </button>
         </div>
     </nav>
@@ -92,45 +94,11 @@
                         <li><b>2023</b>：多模态大模型（如GPT-4）支持文本、图像等多种输入</li>
                     </ul>
                     <!-- 新增：权威AI大模型相关网站链接 -->
-                    <h3 class="text-2xl font-bold mt-10 mb-4">权威AI大模型平台与社区</h3>
-                    <ul class="list-disc pl-6 text-lg mb-6">
-                        <li><a href="https://openai.com/" target="_blank" class="text-primary font-semibold hover:underline">OpenAI 官网</a> —— GPT系列、DALL·E等前沿AI模型</li>
-                        <li><a href="https://deepmind.com/" target="_blank" class="text-primary font-semibold hover:underline">Google DeepMind</a> —— AlphaGo、Gemini等创新AI</li>
-                        <li><a href="https://huggingface.co/" target="_blank" class="text-primary font-semibold hover:underline">Hugging Face</a> —— 全球最大开源大模型社区</li>
-                        <li><a href="https://ai.facebook.com/" target="_blank" class="text-primary font-semibold hover:underline">Meta AI</a> —— LLaMA、FAIR等研究成果</li>
-                        <li><a href="https://ai.google/" target="_blank" class="text-primary font-semibold hover:underline">Google AI</a> —— PaLM、BERT等模型</li>
-                        <li><a href="https://www.anthropic.com/" target="_blank" class="text-primary font-semibold hover:underline">Anthropic</a> —— Claude系列大模型</li>
-                        <li><a href="https://www.microsoft.com/en-us/ai" target="_blank" class="text-primary font-semibold hover:underline">Microsoft AI</a> —— Azure OpenAI服务</li>
-                        <li><a href="https://stability.ai/" target="_blank" class="text-primary font-semibold hover:underline">Stability AI</a> —— Stable Diffusion等生成式AI</li>
-                        <li><a href="https://www.yuque.com/" target="_blank" class="text-primary font-semibold hover:underline">语雀AI专栏</a> —— 中文AI技术与应用专栏</li>
-                    </ul>
-                    <!-- 新增：YouTube视频嵌入 -->
-                    <h3 class="text-2xl font-bold mt-10 mb-4">推荐视频：什么是大语言模型？</h3>
-                    <div class="flex justify-center mb-8">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/kCc8FmEb1nY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-lg shadow-lg"></iframe>
-                    </div>
-                    <p class="text-center text-gray-500 text-sm mb-8">如无法播放，可<a href="https://www.youtube.com/watch?v=kCc8FmEb1nY" target="_blank" class="text-primary underline">点击此处观看</a></p>
-            <!-- 新增推荐视频 -->
-            <h3 class="text-2xl font-bold mt-10 mb-4">推荐视频：大模型训练方法</h3>
-            <div class="flex justify-center mb-8">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="大模型训练方法" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-lg shadow-lg"></iframe>
-            </div>
-            <h3 class="text-2xl font-bold mt-10 mb-4">推荐视频：大模型应用案例</h3>
-            <div class="flex justify-center mb-8">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="大模型应用案例" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-lg shadow-lg"></iframe>
-            </div>
-            <h3 class="text-2xl font-bold mt-10 mb-4">推荐视频：大模型评估指标</h3>
-            <div class="flex justify-center mb-8">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="大模型评估指标" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-lg shadow-lg"></iframe>
-            </div>
-            <h3 class="text-2xl font-bold mt-10 mb-4">推荐视频：大模型伦理问题</h3>
-            <div class="flex justify-center mb-8">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="大模型伦理问题" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-lg shadow-lg"></iframe>
-            </div>
-            <h3 class="text-2xl font-bold mt-10 mb-4">推荐视频：大模型未来趋势</h3>
-            <div class="flex justify-center mb-8">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="大模型未来趋势" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-lg shadow-lg"></iframe>
-            </div>
+
+
+
+
+
                     <!-- 新增：专业内容介绍 -->
                     <h3 class="text-2xl font-bold mt-10 mb-4">大模型的行业影响与前景</h3>
                     <p class="mb-6 text-lg">大模型不仅推动了自然语言处理、图像生成、智能搜索等领域的突破，还在医疗、金融、教育、科研等行业实现了深度赋能。未来，随着多模态、可控性、可解释性等方向的持续进步，大模型将成为数字经济和智能社会的核心驱动力。</p>
@@ -293,6 +261,76 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-colors">
                         <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fa fa-link text-primary mr-3"></i>权威AI大模型平台与社区
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
+                                <span><a href="https://openai.com/" target="_blank" class="text-primary hover:underline">OpenAI 官网</a> —— GPT系列、DALL·E等前沿AI模型</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
+                                <span><a href="https://deepmind.com/" target="_blank" class="text-primary hover:underline">Google DeepMind</a> —— AlphaGo、Gemini等创新AI</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
+                                <span><a href="https://huggingface.co/" target="_blank" class="text-primary hover:underline">Hugging Face</a> —— 全球最大开源大模型社区</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
+                                <span><a href="https://ai.facebook.com/" target="_blank" class="text-primary hover:underline">Meta AI</a> —— LLaMA、FAIR等研究成果</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
+                                <span><a href="https://ai.google/" target="_blank" class="text-primary hover:underline">Google AI</a> —— PaLM、BERT等模型</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
+                                <span><a href="https://www.anthropic.com/" target="_blank" class="text-primary hover:underline">Anthropic</a> —— Claude系列大模型</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
+                                <span><a href="https://www.microsoft.com/en-us/ai" target="_blank" class="text-primary hover:underline">Microsoft AI</a> —— Azure OpenAI服务</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
+                                <span><a href="https://stability.ai/" target="_blank" class="text-primary hover:underline">Stability AI</a> —— Stable Diffusion等生成式AI</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
+                                <span><a href="https://www.yuque.com/" target="_blank" class="text-primary hover:underline">语雀AI专栏</a> —— 中文AI技术与应用专栏</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-colors">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fa fa-book text-primary mr-3"></i>学习笔记与课程
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
+                                <span><a href="https://zhuanlan.zhihu.com/p/1905376136730478093?share_code=17nmQ8N9zXHA6&utm_psn=1911026267085579555" target="_blank" class="text-primary hover:underline">知乎专栏：大模型面试指南</a></span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-github text-primary mt-1 mr-2"></i>
+                                <span><a href="https://github.com/wdndev/llm_interview_note" target="_blank" class="text-primary hover:underline">GitHub：LLM面试笔记</a></span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-github text-primary mt-1 mr-2"></i>
+                                <span><a href="https://github.com/mlabonne/llm-course" target="_blank" class="text-primary hover:underline">GitHub：LLM课程</a></span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-weixin text-primary mt-1 mr-2"></i>
+                                <span><a href="https://mp.weixin.qq.com/s/6nxM9B_BwCkvWGBTFXkRiQ" target="_blank" class="text-primary hover:underline">微信文章：大模型训练实践</a></span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-weixin text-primary mt-1 mr-2"></i>
+                                <span><a href="https://mp.weixin.qq.com/s/QxW1aIaa7333fhYB7alaUw" target="_blank" class="text-primary hover:underline">微信文章：大模型应用案例分析</a></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-colors">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
                             <i class="fa fa-university text-primary mr-3"></i>官方文档与研究
                         </h3>
                         <ul class="space-y-3">
@@ -391,6 +429,30 @@
         </div>
     </section>
 
+    <!-- 推荐视频 -->
+    <section id="videos" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center">推荐视频</h2>
+            <div class="max-w-3xl mx-auto">
+                <h3 class="text-2xl font-bold mt-10 mb-4">什么是大语言模型？</h3>
+                <div class="flex justify-center mb-8">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/kCc8FmEb1nY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-lg shadow-lg"></iframe>
+                </div>
+                <p class="text-center text-gray-500 text-sm mb-12">如无法播放，可<a href="https://www.youtube.com/watch?v=kCc8FmEb1nY" target="_blank" class="text-primary underline">点击此处观看</a></p>
+
+                <h3 class="text-2xl font-bold mt-10 mb-4">大模型训练方法</h3>
+                <div class="flex justify-center mb-8">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dbo3kNKPaUA" title="OpenAI科学家讲解大模型训练原理" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-lg shadow-lg"></iframe>
+                </div>
+
+                <h3 class="text-2xl font-bold mt-10 mb-4">大模型应用案例</h3>
+                <div class="flex justify-center mb-8">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/DQacCB9tDaw" title="GPT-4o实时翻译与多模态应用演示" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-lg shadow-lg"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 页脚 -->
     <footer class="bg-dark text-white py-12">
         <div class="container mx-auto px-4">
@@ -400,7 +462,7 @@
                         <i class="fa fa-brain text-primary text-2xl"></i>
                         <span class="text-xl font-bold">大模型科普站</span>
                     </div>
-                    <p class="text-gray-400">探索AI大模型的奥秘，了解前沿技术与应用</p>
+                    <p class="text-gray-400">专注于AI大模型技术科普，内容涵盖：<br>- 基础原理与核心算法<br>- 训练方法与优化策略<br>- 行业应用与典型案例<br>- 伦理规范与发展趋势</p>
                 </div>
 
                 <div>
@@ -410,6 +472,8 @@
                         <li><a href="#basics" class="hover:text-white transition-colors">基础知识</a></li>
                         <li><a href="#technologies" class="hover:text-white transition-colors">核心技术</a></li>
                         <li><a href="#applications" class="hover:text-white transition-colors">应用场景</a></li>
+                        <li><a href="#resources" class="hover:text-white transition-colors">相关链接资源</a></li>
+                        <li><a href="#videos" class="hover:text-white transition-colors">推荐视频</a></li>
                     </ul>
                 </div>
 
@@ -455,16 +519,23 @@
             });
         });
 
-        // 移动端菜单切换
-        const menuButton = document.querySelector('button.md\\:hidden');
-        if (menuButton) {
-            menuButton.addEventListener('click', function() {
-                // 在实际项目中这里会切换移动端菜单的显示/隐藏
-                alert('移动端菜单功能待实现');
-            });
+        // 移动端菜单切换函数
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+            menu.classList.toggle('flex-col');
+            menu.classList.toggle('absolute');
+            menu.classList.toggle('top-full');
+            menu.classList.toggle('left-0');
+            menu.classList.toggle('w-full');
+            menu.classList.toggle('bg-white');
+            menu.classList.toggle('p-4');
+            menu.classList.toggle('shadow-lg');
+            menu.classList.toggle('z-50');
+            menu.classList.toggle('space-x-8');
+            menu.classList.toggle('space-y-4');
         }
-
-
     </script>
 </body>
 </html>
