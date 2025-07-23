@@ -68,9 +68,7 @@
         <div class="container mx-auto px-4 text-center">
             <h1 class="text-4xl md:text-6xl font-bold mb-6 text-shadow">人工智能大模型科普</h1>
             <p class="text-xl md:text-2xl max-w-3xl mx-auto opacity-90 mb-10">探索AI大模型的奥秘，了解前沿技术与应用</p>
-            <a href="#basics" class="inline-block bg-white text-primary font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
-                开始学习 <i class="fa fa-arrow-down ml-2"></i>
-            </a>
+
         </div>
     </header>
 
@@ -93,50 +91,49 @@
                         <li><b>2022</b>：PaLM、BLOOM等超大模型问世，参数量突破5000亿</li>
                         <li><b>2023</b>：多模态大模型（如GPT-4）支持文本、图像等多种输入</li>
                     </ul>
-                    <!-- 新增：参数增长曲线图（用图片链接） -->
-                    <div class="flex justify-center my-8">
-                        <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*6QpQK2vP6Qw1Qw1Qw1Qw1Q.png" alt="大模型参数增长曲线" class="rounded-lg shadow-lg w-full max-w-xl">
-                    </div>
-                    <p class="text-center text-gray-500 text-sm mb-8">图：主流大模型参数规模增长趋势（示意）</p>
-                    <!-- 新增：Transformer核心公式 -->
-                    <h3 class="text-2xl font-bold mt-10 mb-4">Transformer核心公式</h3>
-                    <pre class="bg-gray-100 rounded-lg p-4 overflow-x-auto text-base mb-6"><code>Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d_k}})V</code></pre>
-                    <p class="text-gray-700 mb-6">该公式描述了自注意力机制的计算方式，是Transformer架构的核心。</p>
-                    <!-- 新增：Mermaid流程图 -->
-                    <h3 class="text-2xl font-bold mt-10 mb-4">大模型推理流程（Mermaid图）</h3>
-                    <div class="bg-white rounded-lg shadow p-4 mb-8 overflow-x-auto">
-                        <pre class="mermaid">flowchart TD
-    A["用户输入问题"] --> B["大模型处理输入"]
-    B --> C["神经网络推理"]
-    C --> D["生成答案"]
-    D --> E["用户获得答案"]</pre>
-                    </div>
-                    <!-- 新增：主流大模型参数占比饼图（Mermaid） -->
-                    <h3 class="text-2xl font-bold mt-10 mb-4">主流大模型参数占比</h3>
-                    <div class="bg-white rounded-lg shadow p-4 mb-8 overflow-x-auto">
-                        <pre class="mermaid">pie
-title "主流大模型参数规模占比"
-"GPT-3 (1750亿)" : 40
-"PaLM (5400亿)" : 30
-"BLOOM (1760亿)" : 20
-"其他" : 10</pre>
-                    </div>
+                    <!-- 新增：权威AI大模型相关网站链接 -->
+                    <h3 class="text-2xl font-bold mt-10 mb-4">权威AI大模型平台与社区</h3>
+                    <ul class="list-disc pl-6 text-lg mb-6">
+                        <li><a href="https://openai.com/" target="_blank" class="text-primary font-semibold hover:underline">OpenAI 官网</a> —— GPT系列、DALL·E等前沿AI模型</li>
+                        <li><a href="https://deepmind.com/" target="_blank" class="text-primary font-semibold hover:underline">Google DeepMind</a> —— AlphaGo、Gemini等创新AI</li>
+                        <li><a href="https://huggingface.co/" target="_blank" class="text-primary font-semibold hover:underline">Hugging Face</a> —— 全球最大开源大模型社区</li>
+                        <li><a href="https://ai.facebook.com/" target="_blank" class="text-primary font-semibold hover:underline">Meta AI</a> —— LLaMA、FAIR等研究成果</li>
+                        <li><a href="https://ai.google/" target="_blank" class="text-primary font-semibold hover:underline">Google AI</a> —— PaLM、BERT等模型</li>
+                        <li><a href="https://www.anthropic.com/" target="_blank" class="text-primary font-semibold hover:underline">Anthropic</a> —— Claude系列大模型</li>
+                        <li><a href="https://www.microsoft.com/en-us/ai" target="_blank" class="text-primary font-semibold hover:underline">Microsoft AI</a> —— Azure OpenAI服务</li>
+                        <li><a href="https://stability.ai/" target="_blank" class="text-primary font-semibold hover:underline">Stability AI</a> —— Stable Diffusion等生成式AI</li>
+                        <li><a href="https://www.yuque.com/" target="_blank" class="text-primary font-semibold hover:underline">语雀AI专栏</a> —— 中文AI技术与应用专栏</li>
+                    </ul>
                     <!-- 新增：YouTube视频嵌入 -->
                     <h3 class="text-2xl font-bold mt-10 mb-4">推荐视频：什么是大语言模型？</h3>
                     <div class="flex justify-center mb-8">
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/kCc8FmEb1nY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-lg shadow-lg"></iframe>
                     </div>
                     <p class="text-center text-gray-500 text-sm mb-8">如无法播放，可<a href="https://www.youtube.com/watch?v=kCc8FmEb1nY" target="_blank" class="text-primary underline">点击此处观看</a></p>
-                    <!-- 新增：CSS动画演示 -->
-                    <h3 class="text-2xl font-bold mt-10 mb-4">动画演示：参数增长</h3>
-                    <div class="flex flex-col items-center mb-8">
-                        <div class="flex space-x-4">
-                            <div class="w-8 h-8 bg-primary rounded-full animate-bounce"></div>
-                            <div class="w-8 h-8 bg-secondary rounded-full animate-bounce delay-150"></div>
-                            <div class="w-8 h-8 bg-accent rounded-full animate-bounce delay-300"></div>
-                        </div>
-                        <p class="text-gray-500 text-sm mt-2">参数规模不断跃升，推动AI能力飞跃</p>
-                    </div>
+            <!-- 新增推荐视频 -->
+            <h3 class="text-2xl font-bold mt-10 mb-4">推荐视频：大模型训练方法</h3>
+            <div class="flex justify-center mb-8">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="大模型训练方法" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-lg shadow-lg"></iframe>
+            </div>
+            <h3 class="text-2xl font-bold mt-10 mb-4">推荐视频：大模型应用案例</h3>
+            <div class="flex justify-center mb-8">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="大模型应用案例" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-lg shadow-lg"></iframe>
+            </div>
+            <h3 class="text-2xl font-bold mt-10 mb-4">推荐视频：大模型评估指标</h3>
+            <div class="flex justify-center mb-8">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="大模型评估指标" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-lg shadow-lg"></iframe>
+            </div>
+            <h3 class="text-2xl font-bold mt-10 mb-4">推荐视频：大模型伦理问题</h3>
+            <div class="flex justify-center mb-8">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="大模型伦理问题" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-lg shadow-lg"></iframe>
+            </div>
+            <h3 class="text-2xl font-bold mt-10 mb-4">推荐视频：大模型未来趋势</h3>
+            <div class="flex justify-center mb-8">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="大模型未来趋势" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-lg shadow-lg"></iframe>
+            </div>
+                    <!-- 新增：专业内容介绍 -->
+                    <h3 class="text-2xl font-bold mt-10 mb-4">大模型的行业影响与前景</h3>
+                    <p class="mb-6 text-lg">大模型不仅推动了自然语言处理、图像生成、智能搜索等领域的突破，还在医疗、金融、教育、科研等行业实现了深度赋能。未来，随着多模态、可控性、可解释性等方向的持续进步，大模型将成为数字经济和智能社会的核心驱动力。</p>
                 </div>
             </div>
         </div>
@@ -394,21 +391,6 @@ title "主流大模型参数规模占比"
         </div>
     </section>
 
-    <!-- 订阅区域 -->
-    <section class="py-16 bg-gradient-blue text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-4">订阅大模型资讯</h2>
-            <p class="text-xl max-w-2xl mx-auto mb-8 opacity-90">及时获取大模型领域最新动态、技术进展和学习资源</p>
-            <form id="subscriptionForm" class="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
-                <input type="email" id="emailInput" placeholder="输入您的邮箱地址" class="flex-grow px-5 py-3 rounded-full text-dark focus:outline-none focus:ring-2 focus:ring-white" required>
-                <button type="submit" class="bg-white text-primary font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors">
-                    订阅 <i class="fa fa-paper-plane ml-2"></i>
-                </button>
-            </form>
-            <p id="subscriptionMessage" class="mt-4 hidden"></p>
-        </div>
-    </section>
-
     <!-- 页脚 -->
     <footer class="bg-dark text-white py-12">
         <div class="container mx-auto px-4">
@@ -474,7 +456,7 @@ title "主流大模型参数规模占比"
         });
 
         // 移动端菜单切换
-        const menuButton = document.querySelector('button.md\:hidden');
+        const menuButton = document.querySelector('button.md\\:hidden');
         if (menuButton) {
             menuButton.addEventListener('click', function() {
                 // 在实际项目中这里会切换移动端菜单的显示/隐藏
@@ -482,51 +464,7 @@ title "主流大模型参数规模占比"
             });
         }
 
-        // 订阅功能实现
-        document.getElementById('subscriptionForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const emailInput = document.getElementById('emailInput');
-            const email = emailInput.value.trim();
-            const messageElement = document.getElementById('subscriptionMessage');
-            const submittedEmails = JSON.parse(localStorage.getItem('submittedEmails') || '[]');
 
-            // 检查是否重复提交
-            if (submittedEmails.includes(email)) {
-                messageElement.textContent = '您已订阅过该邮箱，无需重复提交！';
-                messageElement.className = 'mt-4 text-yellow-300';
-                messageElement.classList.remove('hidden');
-                return;
-            }
-
-            // 发送邮箱到指定地址 (使用Formspree服务，需替换为您的表单ID)
-            fetch('https://formspree.io/f/[YOUR_FORM_ID]', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email: email, subject: '大模型资讯订阅' }),
-            })
-            .then(response => {
-                if (response.ok) {
-                    // 保存到本地存储
-                    submittedEmails.push(email);
-                    localStorage.setItem('submittedEmails', JSON.stringify(submittedEmails));
-
-                    messageElement.textContent = '订阅成功！感谢您的关注。';
-                    messageElement.className = 'mt-4 text-green-300';
-                    emailInput.value = '';
-                } else {
-                    messageElement.textContent = '订阅失败，请稍后再试。';
-                    messageElement.className = 'mt-4 text-red-300';
-                }
-                messageElement.classList.remove('hidden');
-            })
-            .catch(error => {
-                messageElement.textContent = '发生错误，请稍后再试。';
-                messageElement.className = 'mt-4 text-red-300';
-                messageElement.classList.remove('hidden');
-            });
-        });
     </script>
 </body>
 </html>
