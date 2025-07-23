@@ -347,12 +347,13 @@
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-3xl font-bold mb-4">订阅大模型资讯</h2>
             <p class="text-xl max-w-2xl mx-auto mb-8 opacity-90">及时获取大模型领域最新动态、技术进展和学习资源</p>
-            <div class="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
-                <input type="email" placeholder="输入您的邮箱地址" class="flex-grow px-5 py-3 rounded-full text-dark focus:outline-none focus:ring-2 focus:ring-white">
-                <button class="bg-white text-primary font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors">
+            <form id="subscriptionForm" class="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
+                <input type="email" id="emailInput" placeholder="输入您的邮箱地址" class="flex-grow px-5 py-3 rounded-full text-dark focus:outline-none focus:ring-2 focus:ring-white" required>
+                <button type="submit" class="bg-white text-primary font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors">
                     订阅 <i class="fa fa-paper-plane ml-2"></i>
                 </button>
-            </div>
+            </form>
+            <p id="subscriptionMessage" class="mt-4 hidden"></p>
         </div>
     </section>
 
@@ -428,6 +429,52 @@
                 alert('移动端菜单功能待实现');
             });
         }
+
+        // 订阅功能实现
+        document.getElementById('subscriptionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const emailInput = document.getElementById('emailInput');
+            const email = emailInput.value.trim();
+            const messageElement = document.getElementById('subscriptionMessage');
+            const submittedEmails = JSON.parse(localStorage.getItem('submittedEmails') || '[]');
+
+            // 检查是否重复提交
+            if (submittedEmails.includes(email)) {
+                messageElement.textContent = '您已订阅过该邮箱，无需重复提交！';
+                messageElement.className = 'mt-4 text-yellow-300';
+                messageElement.classList.remove('hidden');
+                return;
+            }
+
+            // 发送邮箱到指定地址 (使用Formspree服务，需替换为您的表单ID)
+            fetch('https://formspree.io/f/[YOUR_FORM_ID]', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email: email, subject: '大模型资讯订阅' }),
+            })
+            .then(response => {
+                if (response.ok) {
+                    // 保存到本地存储
+                    submittedEmails.push(email);
+                    localStorage.setItem('submittedEmails', JSON.stringify(submittedEmails));
+
+                    messageElement.textContent = '订阅成功！感谢您的关注。';
+                    messageElement.className = 'mt-4 text-green-300';
+                    emailInput.value = '';
+                } else {
+                    messageElement.textContent = '订阅失败，请稍后再试。';
+                    messageElement.className = 'mt-4 text-red-300';
+                }
+                messageElement.classList.remove('hidden');
+            })
+            .catch(error => {
+                messageElement.textContent = '发生错误，请稍后再试。';
+                messageElement.className = 'mt-4 text-red-300';
+                messageElement.classList.remove('hidden');
+            });
+        });
     </script>
 </body>
 </html>
