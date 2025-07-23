@@ -85,6 +85,58 @@
                     <div class="bg-blue-50 border-l-4 border-primary p-5 my-8 rounded-r-lg">
                         <p class="italic text-gray-700">"大模型代表了人工智能领域的重大进步，它们正在改变我们与技术交互的方式，并为各行各业带来新的可能性。"</p>
                     </div>
+                    <!-- 新增：大模型发展历程 -->
+                    <h3 class="text-2xl font-bold mt-10 mb-4">大模型发展历程</h3>
+                    <ul class="list-disc pl-6 text-lg mb-6">
+                        <li><b>2018</b>：BERT横空出世，开启预训练-微调范式</li>
+                        <li><b>2020</b>：GPT-3发布，参数量达1750亿，推动生成式AI热潮</li>
+                        <li><b>2022</b>：PaLM、BLOOM等超大模型问世，参数量突破5000亿</li>
+                        <li><b>2023</b>：多模态大模型（如GPT-4）支持文本、图像等多种输入</li>
+                    </ul>
+                    <!-- 新增：参数增长曲线图（用图片链接） -->
+                    <div class="flex justify-center my-8">
+                        <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*6QpQK2vP6Qw1Qw1Qw1Qw1Q.png" alt="大模型参数增长曲线" class="rounded-lg shadow-lg w-full max-w-xl">
+                    </div>
+                    <p class="text-center text-gray-500 text-sm mb-8">图：主流大模型参数规模增长趋势（示意）</p>
+                    <!-- 新增：Transformer核心公式 -->
+                    <h3 class="text-2xl font-bold mt-10 mb-4">Transformer核心公式</h3>
+                    <pre class="bg-gray-100 rounded-lg p-4 overflow-x-auto text-base mb-6"><code>Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d_k}})V</code></pre>
+                    <p class="text-gray-700 mb-6">该公式描述了自注意力机制的计算方式，是Transformer架构的核心。</p>
+                    <!-- 新增：Mermaid流程图 -->
+                    <h3 class="text-2xl font-bold mt-10 mb-4">大模型推理流程（Mermaid图）</h3>
+                    <div class="bg-white rounded-lg shadow p-4 mb-8 overflow-x-auto">
+                        <pre class="mermaid">flowchart TD
+    A["用户输入问题"] --> B["大模型处理输入"]
+    B --> C["神经网络推理"]
+    C --> D["生成答案"]
+    D --> E["用户获得答案"]</pre>
+                    </div>
+                    <!-- 新增：主流大模型参数占比饼图（Mermaid） -->
+                    <h3 class="text-2xl font-bold mt-10 mb-4">主流大模型参数占比</h3>
+                    <div class="bg-white rounded-lg shadow p-4 mb-8 overflow-x-auto">
+                        <pre class="mermaid">pie
+title "主流大模型参数规模占比"
+"GPT-3 (1750亿)" : 40
+"PaLM (5400亿)" : 30
+"BLOOM (1760亿)" : 20
+"其他" : 10</pre>
+                    </div>
+                    <!-- 新增：YouTube视频嵌入 -->
+                    <h3 class="text-2xl font-bold mt-10 mb-4">推荐视频：什么是大语言模型？</h3>
+                    <div class="flex justify-center mb-8">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/kCc8FmEb1nY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-lg shadow-lg"></iframe>
+                    </div>
+                    <p class="text-center text-gray-500 text-sm mb-8">如无法播放，可<a href="https://www.youtube.com/watch?v=kCc8FmEb1nY" target="_blank" class="text-primary underline">点击此处观看</a></p>
+                    <!-- 新增：CSS动画演示 -->
+                    <h3 class="text-2xl font-bold mt-10 mb-4">动画演示：参数增长</h3>
+                    <div class="flex flex-col items-center mb-8">
+                        <div class="flex space-x-4">
+                            <div class="w-8 h-8 bg-primary rounded-full animate-bounce"></div>
+                            <div class="w-8 h-8 bg-secondary rounded-full animate-bounce delay-150"></div>
+                            <div class="w-8 h-8 bg-accent rounded-full animate-bounce delay-300"></div>
+                        </div>
+                        <p class="text-gray-500 text-sm mt-2">参数规模不断跃升，推动AI能力飞跃</p>
+                    </div>
                 </div>
             </div>
         </div>
