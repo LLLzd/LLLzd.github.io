@@ -3,424 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>大模型科普与技术解析</title>
+    <meta name="description" content="刘从东个人书法作品展示官网，展示楷书、行书作品、展览现场、荣誉奖项，刘从东自幼研习书法，多次荣获省级国家级奖项，作品多次参展，永久公开可访问">
+    <meta name="keywords" content="刘从东书法,刘从东,书法作品,刘从东书法展览,刘从东书法奖项,楷书作品,行书作品">
+    <meta name="author" content="刘从东">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta property="og:title" content="刘从东的个人书法作品展示">
+    <meta property="og:description" content="刘从东个人书法作品展示官网，展示楷书、行书作品、展览现场、荣誉奖项">
+    <meta property="og:type" content="website">
+    <title>刘从东的个人书法作品展示</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#165DFF',
-                        secondary: '#36BFFA',
-                        accent: '#722ED1',
-                        dark: '#1D2129',
-                        light: '#F2F3F5'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    },
-                }
-            }
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Serif SC', '宋体', 'SimSun', serif;
         }
-    </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .text-shadow {
-                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            }
-            .bg-gradient-blue {
-                background: linear-gradient(135deg, #165DFF 0%, #36BFFA 100%);
-            }
-            .card-hover {
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-            }
-            .card-hover:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            }
+        .calligraphy-font {
+            font-family: 'Ma Shan Zheng', '楷体', 'KaiTi', serif;
         }
     </style>
-
 </head>
-<body class="bg-gray-50 text-dark">
-    <!-- 导航栏 -->
-    <nav class="sticky top-0 z-50 bg-white shadow-md relative">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <i class="fa fa-brain text-primary text-2xl"></i>
-                <span class="text-xl font-bold text-primary">大模型科普站</span>
-            </div>
-            <div id="mobile-menu" class="hidden md:flex space-x-8">
-                <a href="#introduction" class="font-medium hover:text-primary transition-colors">简介</a>
-                <a href="#basics" class="font-medium hover:text-primary transition-colors">基础知识</a>
-                <a href="#technologies" class="font-medium hover:text-primary transition-colors">核心技术</a>
-                <a href="#applications" class="font-medium hover:text-primary transition-colors">应用场景</a>
-                <a href="#resources" class="font-medium hover:text-primary transition-colors">学习资源</a>
-                <a href="#videos" class="font-medium hover:text-primary transition-colors">推荐视频</a>
-            </div>
-            <button class="md:hidden text-dark" id="mobile-menu-button" onclick="toggleMobileMenu()">
-                  <i class="fas fa-bars text-xl"></i>
-            </button>
-        </div>
-    </nav>
+<body class="bg-stone-50 text-stone-800">
+    <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-95 z-50 hidden flex items-center justify-center">
+        <button id="close-lightbox" class="absolute top-4 right-4 text-white text-5xl hover:text-amber-400 transition-colors z-10">&times;</button>
+        <button id="prev-image" class="absolute left-4 text-white text-5xl hover:text-amber-400 transition-colors z-10">&larr;</button>
+        <button id="next-image" class="absolute right-4 text-white text-5xl hover:text-amber-400 transition-colors z-10">&rarr;</button>
+        <img id="lightbox-image" src="" alt="放大查看" class="max-w-[95%] max-h-[95%] object-contain">
+        <div id="lightbox-caption" class="absolute bottom-8 left-0 right-0 text-center text-white text-xl"></div>
+    </div>
 
-    <!-- 英雄区域 -->
-    <header class="bg-gradient-blue text-white py-20 md:py-32">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-shadow">人工智能大模型科普</h1>
-            <p class="text-xl md:text-2xl max-w-3xl mx-auto opacity-90 mb-10">探索AI大模型的奥秘，了解前沿技术与应用</p>
-
-        </div>
+    <header class="fixed top-0 left-0 right-0 z-40 bg-gradient-to-b from-stone-900 to-transparent transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#home" class="text-2xl font-bold text-amber-400 hover:text-amber-300 transition-colors calligraphy-font">刘从东</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-stone-200 hover:text-amber-400 transition-colors">首页</a>
+                    <a href="#works" class="text-stone-200 hover:text-amber-400 transition-colors">作品展示</a>
+                    <a href="#exhibitions" class="text-stone-200 hover:text-amber-400 transition-colors">展览现场</a>
+                    <a href="#honors" class="text-stone-200 hover:text-amber-400 transition-colors">荣誉奖项</a>
+                    <a href="#about" class="text-stone-200 hover:text-amber-400 transition-colors">艺术简介</a>
+                    <a href="#contact" class="text-stone-200 hover:text-amber-400 transition-colors">联系方式</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-stone-200 text-2xl">&#9776;</button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2 bg-stone-900 bg-opacity-95 rounded-lg p-4">
+                <a href="#home" class="block text-stone-200 hover:text-amber-400 transition-colors py-2">首页</a>
+                <a href="#works" class="block text-stone-200 hover:text-amber-400 transition-colors py-2">作品展示</a>
+                <a href="#exhibitions" class="block text-stone-200 hover:text-amber-400 transition-colors py-2">展览现场</a>
+                <a href="#honors" class="block text-stone-200 hover:text-amber-400 transition-colors py-2">荣誉奖项</a>
+                <a href="#about" class="block text-stone-200 hover:text-amber-400 transition-colors py-2">艺术简介</a>
+                <a href="#contact" class="block text-stone-200 hover:text-amber-400 transition-colors py-2">联系方式</a>
+            </div>
+        </nav>
     </header>
 
-    <!-- 简介部分 -->
-    <section id="introduction" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
+    <section id="home" class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23d4af37\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        </div>
+        <div class="relative z-10 text-center px-6">
+            <div class="mb-8 animate-fade-in-up">
+                <div class="w-40 h-40 mx-auto mb-6 rounded-full border-4 border-amber-400 flex items-center justify-center bg-stone-800 shadow-2xl">
+                    <span class="text-7xl text-amber-400 calligraphy-font">书</span>
+                </div>
+            </div>
+            <h1 class="text-6xl md:text-8xl font-bold text-amber-400 mb-6 animate-fade-in-up calligraphy-font" style="animation-delay: 0.2s;">刘从东</h1>
+            <p class="text-2xl md:text-3xl text-stone-300 mb-4 animate-fade-in-up" style="animation-delay: 0.4s;">个人书法作品展示</p>
+            <div class="w-32 h-1 bg-amber-400 mx-auto mb-8 animate-fade-in-up" style="animation-delay: 0.6s;"></div>
+            <p class="text-xl md:text-2xl text-amber-300 max-w-3xl mx-auto mb-8 animate-fade-in-up calligraphy-font" style="animation-delay: 0.8s;">
+                笔耕不辍，墨润初心
+            </p>
+            <div class="animate-fade-in-up" style="animation-delay: 1s;">
+                <a href="#works" class="inline-block px-10 py-4 bg-amber-600 hover:bg-amber-700 text-white text-lg font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl">
+                    浏览作品
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg class="w-10 h-10 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <section id="works" class="py-20 bg-stone-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl md:text-6xl font-bold text-stone-800 mb-4 calligraphy-font">作品展示</h2>
+                <div class="w-32 h-1 bg-amber-600 mx-auto mb-6"></div>
+                <p class="text-stone-600 text-lg max-w-2xl mx-auto">精选书法作品，展现传统书法艺术的魅力</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="works-grid">
+                <!-- 作品图片将通过JavaScript动态加载 -->
+            </div>
+        </div>
+    </section>
+
+    <section id="exhibitions" class="py-20 bg-stone-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl md:text-6xl font-bold text-amber-400 mb-4 calligraphy-font">展览现场</h2>
+                <div class="w-32 h-1 bg-amber-600 mx-auto mb-6"></div>
+                <p class="text-stone-300 text-lg max-w-2xl mx-auto">书法展览活动现场记录</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="exhibitions-grid">
+                <!-- 展览图片将通过JavaScript动态加载 -->
+            </div>
+        </div>
+    </section>
+
+    <section id="honors" class="py-20 bg-stone-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl md:text-6xl font-bold text-stone-800 mb-4 calligraphy-font">荣誉奖项</h2>
+                <div class="w-32 h-1 bg-amber-600 mx-auto mb-6"></div>
+                <p class="text-stone-600 text-lg max-w-2xl mx-auto">获得的荣誉与成就</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="honors-grid">
+                <!-- 荣誉图片将通过JavaScript动态加载 -->
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-stone-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl md:text-6xl font-bold text-amber-400 mb-4 calligraphy-font">艺术简介</h2>
+                <div class="w-32 h-1 bg-amber-600 mx-auto mb-6"></div>
+            </div>
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-8 text-center">什么是人工智能大模型？</h2>
-                <div class="prose prose-lg max-w-none">
-                    <p class="mb-6 text-lg">人工智能大模型（Large Language Model）是一种基于深度学习的复杂神经网络系统，通过海量数据训练而成，能够理解和生成人类语言，甚至完成各种复杂任务。</p>
-                    <p class="mb-6 text-lg">这些模型通常具有数十亿甚至数千亿个参数，使其能够捕捉语言中的细微差别、上下文关系和世界知识。近年来，大模型技术发展迅速，已成为人工智能领域的重要突破。</p>
-                    <div class="bg-blue-50 border-l-4 border-primary p-5 my-8 rounded-r-lg">
-                        <p class="italic text-gray-700">"大模型代表了人工智能领域的重大进步，它们正在改变我们与技术交互的方式，并为各行各业带来新的可能性。"</p>
+                <div class="bg-stone-700 rounded-lg p-8 md:p-12 shadow-2xl">
+                    <div class="mb-8">
+                        <h3 class="text-3xl font-bold text-amber-400 mb-6 calligraphy-font">个人经历</h3>
+                        <p class="text-stone-200 text-lg leading-relaxed">
+                            刘从东，自幼研习书法，擅长楷书、行书，多次荣获省级国家级奖项，作品多次参展。
+                        </p>
                     </div>
-                    <!-- 新增：大模型发展历程 -->
-                    <h3 class="text-2xl font-bold mt-10 mb-4">大模型发展历程</h3>
-                    <ul class="list-disc pl-6 text-lg mb-6">
-                        <li><b>2018</b>：BERT横空出世，开启预训练-微调范式</li>
-                        <li><b>2020</b>：GPT-3发布，参数量达1750亿，推动生成式AI热潮</li>
-                        <li><b>2022</b>：PaLM、BLOOM等超大模型问世，参数量突破5000亿</li>
-                        <li><b>2023</b>：多模态大模型（如GPT-4）支持文本、图像等多种输入</li>
-                    </ul>
-                    <!-- 新增：权威AI大模型相关网站链接 -->
-
-
-
-
-
-                    <!-- 新增：专业内容介绍 -->
-                    <h3 class="text-2xl font-bold mt-10 mb-4">大模型的行业影响与前景</h3>
-                    <p class="mb-6 text-lg">大模型不仅推动了自然语言处理、图像生成、智能搜索等领域的突破，还在医疗、金融、教育、科研等行业实现了深度赋能。未来，随着多模态、可控性、可解释性等方向的持续进步，大模型将成为数字经济和智能社会的核心驱动力。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 基础知识部分 -->
-    <section id="basics" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12 text-center">大模型基础知识</h2>
-            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                <div class="bg-white rounded-xl shadow-md p-6 card-hover">
-                    <div class="text-primary text-3xl mb-4"><i class="fa fa-cubes"></i></div>
-                    <h3 class="text-xl font-bold mb-3">模型架构</h3>
-                    <p class="text-gray-700">现代大模型主要基于Transformer架构，这是一种使用自注意力机制的神经网络，能够并行处理序列数据并捕捉长距离依赖关系。</p>
-                </div>
-                <div class="bg-white rounded-xl shadow-md p-6 card-hover">
-                    <div class="text-primary text-3xl mb-4"><i class="fa fa-database"></i></div>
-                    <h3 class="text-xl font-bold mb-3">训练数据</h3>
-                    <p class="text-gray-700">大模型训练需要海量文本数据，包括书籍、网站、文章等多种来源，总量可达数万亿tokens，使模型能够学习语言模式和世界知识。</p>
-                </div>
-                <div class="bg-white rounded-xl shadow-md p-6 card-hover">
-                    <div class="text-primary text-3xl mb-4"><i class="fa fa-sliders"></i></div>
-                    <h3 class="text-xl font-bold mb-3">参数规模</h3>
-                    <p class="text-gray-700">模型参数是衡量规模的重要指标，从早期的数十亿到现在的数千亿，参数规模的增长直接提升了模型的能力和泛化性。</p>
-                </div>
-                <div class="bg-white rounded-xl shadow-md p-6 card-hover">
-                    <div class="text-primary text-3xl mb-4"><i class="fa fa-refresh"></i></div>
-                    <h3 class="text-xl font-bold mb-3">预训练与微调</h3>
-                    <p class="text-gray-700">大模型通常采用两阶段训练：预训练阶段学习通用知识，微调阶段针对特定任务或领域进行调整，以适应具体应用需求。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 核心技术部分 -->
-    <section id="technologies" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12 text-center">核心技术</h2>
-            <div class="max-w-4xl mx-auto">
-                <div class="space-y-12">
-                    <div class="flex flex-col md:flex-row gap-8 items-center">
-                        <div class="md:w-1/3">
-                            <div class="bg-blue-100 rounded-full p-6 w-32 h-32 flex items-center justify-center mx-auto">
-                                <i class="fa fa-exchange text-primary text-5xl"></i>
-                            </div>
-                        </div>
-                        <div class="md:w-2/3">
-                            <h3 class="text-2xl font-bold mb-4">注意力机制</h3>
-                            <p class="text-gray-700 mb-4">注意力机制允许模型在处理序列数据时，动态关注输入中的不同部分，是Transformer架构的核心创新，大幅提升了模型处理长文本的能力。</p>
-                            <p class="text-gray-700">自注意力机制使模型能够学习文本内部的依赖关系，而交叉注意力则能在编码器-解码器架构中建立源文本和目标文本之间的联系。</p>
-                        </div>
+                    <div class="mb-8">
+                        <h3 class="text-3xl font-bold text-amber-400 mb-6 calligraphy-font">艺术风格</h3>
+                        <p class="text-stone-200 text-lg leading-relaxed">
+                            书法风格古朴典雅，既有传统书法的深厚功底，又融入现代审美理念。笔法遒劲有力，结构严谨工整，气韵生动自然，形成了独特的个人风格。
+                        </p>
                     </div>
-
-                    <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
-                        <div class="md:w-1/3">
-                            <div class="bg-blue-100 rounded-full p-6 w-32 h-32 flex items-center justify-center mx-auto">
-                                <i class="fa fa-code-fork text-primary text-5xl"></i>
-                            </div>
-                        </div>
-                        <div class="md:w-2/3">
-                            <h3 class="text-2xl font-bold mb-4">Transformer架构</h3>
-                            <p class="text-gray-700 mb-4">Transformer是一种完全基于注意力机制的神经网络架构，摒弃了传统的循环和卷积结构，能够并行处理输入数据，显著提高了训练效率。</p>
-                            <p class="text-gray-700">其编码器-解码器结构使其在各种序列转换任务中表现出色，成为现代大语言模型的标准架构。</p>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-col md:flex-row gap-8 items-center">
-                        <div class="md:w-1/3">
-                            <div class="bg-blue-100 rounded-full p-6 w-32 h-32 flex items-center justify-center mx-auto">
-                                <i class="fa fa-cogs text-primary text-5xl"></i>
-                            </div>
-                        </div>
-                        <div class="md:w-2/3">
-                            <h3 class="text-2xl font-bold mb-4">指令微调与RLHF</h3>
-                            <p class="text-gray-700 mb-4">指令微调(Instruction Tuning)通过让模型学习遵循指令来提高其实用性，而人类反馈强化学习(RLHF)则通过人类偏好数据进一步优化模型输出。</p>
-                            <p class="text-gray-700">这些技术大幅提升了模型的对齐性、安全性和可用性，使其更符合人类期望和价值观。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 应用场景部分 -->
-    <section id="applications" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12 text-center">大模型应用场景</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
-                    <div class="h-48 bg-blue-200 flex items-center justify-center">
-                        <i class="fa fa-comments text-6xl text-primary opacity-70"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3">智能对话助手</h3>
-                        <p class="text-gray-700">能够理解自然语言并进行流畅对话，提供信息查询、任务协助等功能，如ChatGPT、文心一言等产品。</p>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
-                    <div class="h-48 bg-blue-200 flex items-center justify-center">
-                        <i class="fa fa-file-text text-6xl text-primary opacity-70"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3">内容创作</h3>
-                        <p class="text-gray-700">辅助或自动生成文章、代码、诗歌等各类内容，提高创作效率，应用于写作、编程、设计等领域。</p>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
-                    <div class="h-48 bg-blue-200 flex items-center justify-center">
-                        <i class="fa fa-search text-6xl text-primary opacity-70"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3">智能搜索</h3>
-                        <p class="text-gray-700">理解复杂查询意图，提供更精准的搜索结果，支持自然语言提问和多轮对话式搜索体验。</p>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
-                    <div class="h-48 bg-blue-200 flex items-center justify-center">
-                        <i class="fa fa-graduation-cap text-6xl text-primary opacity-70"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3">教育培训</h3>
-                        <p class="text-gray-700">提供个性化学习体验，解答疑问、辅助理解复杂概念，成为学习者的智能辅导助手。</p>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
-                    <div class="h-48 bg-blue-200 flex items-center justify-center">
-                        <i class="fa fa-shield text-6xl text-primary opacity-70"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3">安全防护</h3>
-                        <p class="text-gray-700">检测网络威胁、识别恶意代码、分析安全漏洞，提高信息系统的安全性和可靠性。</p>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
-                    <div class="h-48 bg-blue-200 flex items-center justify-center">
-                        <i class="fa fa-medkit text-6xl text-primary opacity-70"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3">医疗健康</h3>
-                        <p class="text-gray-700">辅助医学影像分析、疾病诊断和药物研发，提高医疗服务的效率和准确性。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 学习资源部分 -->
-    <section id="resources" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12 text-center">大模型学习资源</h2>
-            <div class="max-w-5xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-colors">
-                        <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <i class="fa fa-link text-primary mr-3"></i>权威AI大模型平台与社区
-                        </h3>
-                        <ul class="space-y-3">
+                    <div>
+                        <h3 class="text-3xl font-bold text-amber-400 mb-6 calligraphy-font">主要成就</h3>
+                        <ul class="text-stone-200 text-lg space-y-3">
                             <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <span><a href="https://openai.com/" target="_blank" class="text-primary hover:underline">OpenAI 官网</a> —— GPT系列、DALL·E等前沿AI模型</span>
+                                <span class="text-amber-400 mr-3">•</span>
+                                <span>多次荣获省级国家级书法大赛奖项</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <span><a href="https://deepmind.com/" target="_blank" class="text-primary hover:underline">Google DeepMind</a> —— AlphaGo、Gemini等创新AI</span>
+                                <span class="text-amber-400 mr-3">•</span>
+                                <span>作品多次参加国内外书法展览</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <span><a href="https://huggingface.co/" target="_blank" class="text-primary hover:underline">Hugging Face</a> —— 全球最大开源大模型社区</span>
+                                <span class="text-amber-400 mr-3">•</span>
+                                <span>积极参与书法公益活动，传播书法文化</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <span><a href="https://ai.facebook.com/" target="_blank" class="text-primary hover:underline">Meta AI</a> —— LLaMA、FAIR等研究成果</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <span><a href="https://ai.google/" target="_blank" class="text-primary hover:underline">Google AI</a> —— PaLM、BERT等模型</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <span><a href="https://www.anthropic.com/" target="_blank" class="text-primary hover:underline">Anthropic</a> —— Claude系列大模型</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <span><a href="https://www.microsoft.com/en-us/ai" target="_blank" class="text-primary hover:underline">Microsoft AI</a> —— Azure OpenAI服务</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <span><a href="https://stability.ai/" target="_blank" class="text-primary hover:underline">Stability AI</a> —— Stable Diffusion等生成式AI</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <span><a href="https://www.yuque.com/" target="_blank" class="text-primary hover:underline">语雀AI专栏</a> —— 中文AI技术与应用专栏</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-colors">
-                        <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <i class="fa fa-book text-primary mr-3"></i>学习笔记与课程
-                        </h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <span><a href="https://zhuanlan.zhihu.com/p/1905376136730478093?share_code=17nmQ8N9zXHA6&utm_psn=1911026267085579555" target="_blank" class="text-primary hover:underline">知乎专栏：大模型面试指南</a></span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-github text-primary mt-1 mr-2"></i>
-                                <span><a href="https://github.com/wdndev/llm_interview_note" target="_blank" class="text-primary hover:underline">GitHub：LLM面试笔记</a></span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-github text-primary mt-1 mr-2"></i>
-                                <span><a href="https://github.com/mlabonne/llm-course" target="_blank" class="text-primary hover:underline">GitHub：LLM课程</a></span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-weixin text-primary mt-1 mr-2"></i>
-                                <span><a href="https://mp.weixin.qq.com/s/6nxM9B_BwCkvWGBTFXkRiQ" target="_blank" class="text-primary hover:underline">微信文章：大模型训练实践</a></span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-weixin text-primary mt-1 mr-2"></i>
-                                <span><a href="https://mp.weixin.qq.com/s/QxW1aIaa7333fhYB7alaUw" target="_blank" class="text-primary hover:underline">微信文章：大模型应用案例分析</a></span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-colors">
-                        <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <i class="fa fa-university text-primary mr-3"></i>官方文档与研究
-                        </h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <a href="https://openai.com/research" target="_blank" class="hover:text-primary">OpenAI Research</a>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <a href="https://ai.google/research/" target="_blank" class="hover:text-primary">Google AI Research</a>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <a href="https://research.facebook.com/ai/" target="_blank" class="hover:text-primary">Meta AI Research</a>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <a href="https://arxiv.org/" target="_blank" class="hover:text-primary">arXiv 论文预印本</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-colors">
-                        <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <i class="fa fa-code text-primary mr-3"></i>开源项目
-                        </h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <a href="https://github.com/huggingface/transformers" target="_blank" class="hover:text-primary">Hugging Face Transformers</a>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <a href="https://github.com/facebookresearch/fairseq" target="_blank" class="hover:text-primary">Fairseq (Meta)</a>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <a href="https://github.com/microsoft/DeepSpeed" target="_blank" class="hover:text-primary">Microsoft DeepSpeed</a>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <a href="https://github.com/tensorflow/models" target="_blank" class="hover:text-primary">TensorFlow Models</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-colors">
-                        <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <i class="fa fa-graduation-cap text-primary mr-3"></i>在线课程
-                        </h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <a href="https://www.coursera.org/" target="_blank" class="hover:text-primary">Coursera AI专项课程</a>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <a href="https://www.edx.org/" target="_blank" class="hover:text-primary">edX AI相关课程</a>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <a href="https://www.deeplearning.ai/" target="_blank" class="hover:text-primary">DeepLearning.AI</a>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <a href="https://www.udacity.com/" target="_blank" class="hover:text-primary">Udacity AI纳米学位</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-colors">
-                        <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <i class="fa fa-newspaper-o text-primary mr-3"></i>行业资讯
-                        </h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <a href="https://www.technologyreview.com/" target="_blank" class="hover:text-primary">MIT Technology Review</a>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <a href="https://www.wired.com/tag/artificial-intelligence/" target="_blank" class="hover:text-primary">Wired AI专栏</a>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <a href="https://aiindex.stanford.edu/" target="_blank" class="hover:text-primary">斯坦福AI指数报告</a>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-external-link text-primary mt-1 mr-2"></i>
-                                <a href="https://venturebeat.com/category/ai/" target="_blank" class="hover:text-primary">VentureBeat AI</a>
+                                <span class="text-amber-400 mr-3">•</span>
+                                <span>作品被多家机构和个人收藏</span>
                             </li>
                         </ul>
                     </div>
@@ -429,112 +172,186 @@
         </div>
     </section>
 
-    <!-- 推荐视频 -->
-    <section id="videos" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12 text-center">推荐视频</h2>
-            <div class="max-w-3xl mx-auto">
-                <h3 class="text-2xl font-bold mt-10 mb-4">什么是大语言模型？</h3>
-                <div class="flex justify-center mb-8">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/kCc8FmEb1nY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-lg shadow-lg"></iframe>
+    <section id="contact" class="py-20 bg-stone-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl md:text-6xl font-bold text-stone-800 mb-4 calligraphy-font">联系方式</h2>
+                <div class="w-32 h-1 bg-amber-600 mx-auto mb-6"></div>
+                <p class="text-stone-600 text-lg max-w-2xl mx-auto">欢迎与我联系，共同探讨书法艺术</p>
+            </div>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-8 text-center transform hover:scale-105 transition-all duration-300">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-amber-100 rounded-full flex items-center justify-center">
+                        <span class="text-4xl">📱</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-stone-800 mb-3">电话</h3>
+                    <p class="text-stone-600 text-lg">138-0000-0000</p>
                 </div>
-                <p class="text-center text-gray-500 text-sm mb-12">如无法播放，可<a href="https://www.youtube.com/watch?v=kCc8FmEb1nY" target="_blank" class="text-primary underline">点击此处观看</a></p>
-
-                <h3 class="text-2xl font-bold mt-10 mb-4">大模型训练方法</h3>
-                <div class="flex justify-center mb-8">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dbo3kNKPaUA" title="OpenAI科学家讲解大模型训练原理" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-lg shadow-lg"></iframe>
+                <div class="bg-white rounded-lg shadow-lg p-8 text-center transform hover:scale-105 transition-all duration-300">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-amber-100 rounded-full flex items-center justify-center">
+                        <span class="text-4xl">💬</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-stone-800 mb-3">微信</h3>
+                    <p class="text-stone-600 text-lg">liucongdong_art</p>
+                    <p class="text-stone-500 text-sm mt-2">（可添加微信二维码图片）</p>
                 </div>
-
-                <h3 class="text-2xl font-bold mt-10 mb-4">大模型应用案例</h3>
-                <div class="flex justify-center mb-8">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/DQacCB9tDaw" title="GPT-4o实时翻译与多模态应用演示" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-lg shadow-lg"></iframe>
+                <div class="bg-white rounded-lg shadow-lg p-8 text-center transform hover:scale-105 transition-all duration-300">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-amber-100 rounded-full flex items-center justify-center">
+                        <span class="text-4xl">📍</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-stone-800 mb-3">地址</h3>
+                    <p class="text-stone-600 text-lg">山东省潍坊市</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 页脚 -->
-    <footer class="bg-dark text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <i class="fa fa-brain text-primary text-2xl"></i>
-                        <span class="text-xl font-bold">大模型科普站</span>
-                    </div>
-                    <p class="text-gray-400">专注于AI大模型技术科普，内容涵盖：<br>- 基础原理与核心算法<br>- 训练方法与优化策略<br>- 行业应用与典型案例<br>- 伦理规范与发展趋势</p>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">快速链接</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#introduction" class="hover:text-white transition-colors">简介</a></li>
-                        <li><a href="#basics" class="hover:text-white transition-colors">基础知识</a></li>
-                        <li><a href="#technologies" class="hover:text-white transition-colors">核心技术</a></li>
-                        <li><a href="#applications" class="hover:text-white transition-colors">应用场景</a></li>
-                        <li><a href="#resources" class="hover:text-white transition-colors">相关链接资源</a></li>
-                        <li><a href="#videos" class="hover:text-white transition-colors">推荐视频</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">资源链接</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="https://openai.com" target="_blank" class="hover:text-white transition-colors">OpenAI</a></li>
-                        <li><a href="https://ai.google" target="_blank" class="hover:text-white transition-colors">Google AI</a></li>
-                        <li><a href="https://huggingface.co" target="_blank" class="hover:text-white transition-colors">Hugging Face</a></li>
-                        <li><a href="https://github.com" target="_blank" class="hover:text-white transition-colors">GitHub</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">联系我们</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li class="flex items-center"><i class="fa fa-envelope mr-2"></i> contact@example.com</li>
-                        <li class="flex items-center"><i class="fa fa-github mr-2"></i> github.com/LLLzd</li>
-                        <li class="flex items-center"><i class="fa fa-twitter mr-2"></i> @LLLzd_AI</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
-                <p>&copy; 2023 大模型科普站. 保留所有权利.</p>
-            </div>
+    <footer class="bg-stone-900 text-stone-400 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-lg mb-2">&copy; 2026 刘从东书法艺术 版权所有</p>
+            <p class="text-base text-stone-500">本网站永久可访问</p>
         </div>
     </footer>
 
+    <script src="js/main.js"></script>
     <script>
-        // 简单的平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
+        // 动态加载图片
+        document.addEventListener('DOMContentLoaded', function() {
+            // 加载作品图片
+            fetch('images_data.json')
+                .then(response => response.json())
+                .then(data => {
+                    // 加载作品
+                    const worksGrid = document.getElementById('works-grid');
+                    data.works.forEach(work => {
+                        const div = document.createElement('div');
+                        div.className = 'work-item group relative overflow-hidden rounded-lg shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300';
+                        div.innerHTML = `
+                            <img src="images/works/${work.filename}" alt="${work.name}" class="w-full h-64 object-cover" loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <div class="text-white">
+                                    <h3 class="text-xl font-bold mb-2">${work.name}</h3>
+                                </div>
+                            </div>
+                        `;
+                        worksGrid.appendChild(div);
                     });
-                }
-            });
+
+                    // 加载展览
+                    const exhibitionsGrid = document.getElementById('exhibitions-grid');
+                    data.exhibitions.forEach(exhibition => {
+                        const div = document.createElement('div');
+                        div.className = 'exhibition-item group relative overflow-hidden rounded-lg shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300';
+                        div.innerHTML = `
+                            <img src="images/exhibitions/${exhibition.filename}" alt="${exhibition.name}" class="w-full h-64 object-cover" loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                <div class="text-white">
+                                    <h3 class="text-xl font-bold mb-2">${exhibition.name}</h3>
+                                </div>
+                            </div>
+                        `;
+                        exhibitionsGrid.appendChild(div);
+                    });
+
+                    // 加载荣誉
+                    const honorsGrid = document.getElementById('honors-grid');
+                    data.honors.forEach(honor => {
+                        const div = document.createElement('div');
+                        div.className = 'honor-item bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300';
+                        div.innerHTML = `
+                            <img src="images/honors/${honor.path}" alt="${honor.name}" class="w-full h-48 object-cover" loading="lazy">
+                            <div class="p-4">
+                                <h3 class="text-lg font-bold text-stone-800">${honor.name}</h3>
+                            </div>
+                        `;
+                        honorsGrid.appendChild(div);
+                    });
+
+                    // 重新初始化lightbox
+                    initializeLightbox();
+                })
+                .catch(error => {
+                    console.error('Error loading images:', error);
+                });
         });
 
-        // 移动端菜单切换函数
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-            menu.classList.toggle('flex');
-            menu.classList.toggle('flex-col');
-            menu.classList.toggle('absolute');
-            menu.classList.toggle('top-full');
-            menu.classList.toggle('left-0');
-            menu.classList.toggle('w-full');
-            menu.classList.toggle('bg-white');
-            menu.classList.toggle('p-4');
-            menu.classList.toggle('shadow-lg');
-            menu.classList.toggle('z-50');
-            menu.classList.toggle('space-x-8');
-            menu.classList.toggle('space-y-4');
+        function initializeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            const closeLightbox = document.getElementById('close-lightbox');
+            const prevImage = document.getElementById('prev-image');
+            const nextImage = document.getElementById('next-image');
+            
+            let currentImages = [];
+            let currentIndex = 0;
+
+            const allImageItems = [...document.querySelectorAll('.work-item, .exhibition-item, .honor-item')];
+            
+            allImageItems.forEach((item, index) => {
+                item.addEventListener('click', function() {
+                    const img = this.querySelector('img');
+                    const src = img.getAttribute('src');
+                    const alt = img.getAttribute('alt');
+                    
+                    currentImages = allImageItems.map(item => {
+                        const img = item.querySelector('img');
+                        return {
+                            src: img.getAttribute('src'),
+                            alt: img.getAttribute('alt')
+                        };
+                    });
+                    currentIndex = currentImages.findIndex(item => item.src === src);
+                    
+                    lightboxImage.src = src;
+                    lightboxCaption.textContent = alt;
+                    lightbox.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            closeLightbox.addEventListener('click', closeLightboxHandler);
+
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    closeLightboxHandler();
+                }
+            });
+
+            function closeLightboxHandler() {
+                lightbox.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+
+            prevImage.addEventListener('click', function(e) {
+                e.stopPropagation();
+                currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+                lightboxImage.src = currentImages[currentIndex].src;
+                lightboxCaption.textContent = currentImages[currentIndex].alt;
+            });
+
+            nextImage.addEventListener('click', function(e) {
+                e.stopPropagation();
+                currentIndex = (currentIndex + 1) % currentImages.length;
+                lightboxImage.src = currentImages[currentIndex].src;
+                lightboxCaption.textContent = currentImages[currentIndex].alt;
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (!lightbox.classList.contains('hidden')) {
+                    if (e.key === 'Escape') {
+                        closeLightboxHandler();
+                    } else if (e.key === 'ArrowLeft') {
+                        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+                        lightboxImage.src = currentImages[currentIndex].src;
+                        lightboxCaption.textContent = currentImages[currentIndex].alt;
+                    } else if (e.key === 'ArrowRight') {
+                        currentIndex = (currentIndex + 1) % currentImages.length;
+                        lightboxImage.src = currentImages[currentIndex].src;
+                        lightboxCaption.textContent = currentImages[currentIndex].alt;
+                    }
+                }
+            });
         }
     </script>
 </body>
