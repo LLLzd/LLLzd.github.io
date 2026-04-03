@@ -9,8 +9,8 @@
       "name": "楷书《天道酬勤》"
     },
     {
-      "filename": "出版物2.jpg",
-      "name": "出版物2"
+      "filename": "出版物.jpg",
+      "name": "书法出版物"
     },
     {
       "filename": "心经.jpg",
@@ -19,10 +19,6 @@
     {
       "filename": "草书.jpg",
       "name": "草书作品"
-    },
-    {
-      "filename": "出版物.jpg",
-      "name": "出版物"
     },
     {
       "filename": "心经2.jpg",
@@ -57,10 +53,6 @@
       "name": "行书《北国风光》"
     },
     {
-      "filename": "书法作品_2.JPG",
-      "name": "书法作品"
-    },
-    {
       "filename": "寿.jpg",
       "name": "篆书《寿》"
     },
@@ -73,14 +65,14 @@
       "name": "行书《清时有味是无能》"
     },
     {
-      "filename": "书法作品_1.JPG",
-      "name": "书法作品"
+      "filename": "清风明月.mp4",
+      "name": "书法视频《清风明月》"
     }
   ],
   "exhibitions": [
     {
       "filename": "部队照片_3.jpg",
-      "name": "部队书法活动照片"
+      "name": "部队书法活动"
     },
     {
       "filename": "北京银行书法活动.jpg",
@@ -88,15 +80,15 @@
     },
     {
       "filename": "打字员照片_1.jpg",
-      "name": "打字员工作照"
+      "name": "书法活动现场"
     },
     {
       "filename": "个人写真.jpg",
-      "name": "书法家个人写真"
+      "name": "个人写真"
     },
     {
       "filename": "书法公益活动2.jpg",
-      "name": "书法公益活动现场2"
+      "name": "书法公益活动"
     },
     {
       "filename": "与毛体大师合影.jpg",
@@ -116,11 +108,11 @@
     },
     {
       "filename": "书法公益活动.jpg",
-      "name": "书法公益活动现场"
+      "name": "书法公益活动"
     },
     {
       "filename": "书法展览.jpg",
-      "name": "书法展览全景"
+      "name": "书法展览"
     },
     {
       "filename": "军队书法活动.jpg",
@@ -128,7 +120,7 @@
     },
     {
       "filename": "十笏园个人书法展海报.jpg",
-      "name": "十笏园个人书法展海报"
+      "name": "十笏园个人书法展"
     },
     {
       "filename": "北京银行春节送春联.jpg",
@@ -144,7 +136,7 @@
     },
     {
       "filename": "书法展现场1.jpg",
-      "name": "书法展览现场1"
+      "name": "书法展览现场"
     },
     {
       "filename": "军队班级照片_2.jpg",
@@ -156,7 +148,11 @@
     },
     {
       "filename": "书法展现场2.jpg",
-      "name": "书法展览现场2"
+      "name": "书法展览现场"
+    },
+    {
+      "filename": "书法展现场视频报道.mp4",
+      "name": "书法展现场视频报道"
     }
   ],
   "honors": [
