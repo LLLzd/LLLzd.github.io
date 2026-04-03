@@ -18,13 +18,32 @@
     <style>
         body {
             font-family: 'Noto Serif SC', '宋体', 'SimSun', serif;
+            background-color: #f5f2ed;
+            background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M50 50m-45 0a45 45 0 1 0 90 0a45 45 0 1 0 -90 0" fill="none" stroke="%23d4af37" stroke-width="0.5" opacity="0.2"/%3E%3C/svg%3E');
         }
         .calligraphy-font {
             font-family: 'Ma Shan Zheng', '楷体', 'KaiTi', serif;
         }
+        .bg-chinese-pattern {
+            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23d4af37" fill-opacity="0.1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
-<body class="bg-stone-50 text-stone-800">
+<body class="text-stone-800">
     <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-95 z-50 hidden flex items-center justify-center">
         <button id="close-lightbox" class="absolute top-4 right-4 text-white text-5xl hover:text-amber-400 transition-colors z-10">&times;</button>
         <button id="prev-image" class="absolute left-4 text-white text-5xl hover:text-amber-400 transition-colors z-10">&larr;</button>
@@ -33,68 +52,147 @@
         <div id="lightbox-caption" class="absolute bottom-8 left-0 right-0 text-center text-white text-xl"></div>
     </div>
 
-    <header class="fixed top-0 left-0 right-0 z-40 bg-gradient-to-b from-stone-900 to-transparent transition-all duration-300">
-        <nav class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <a href="#home" class="text-2xl font-bold text-amber-400 hover:text-amber-300 transition-colors calligraphy-font">刘从东</a>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-stone-200 hover:text-amber-400 transition-colors">首页</a>
-                    <a href="#works" class="text-stone-200 hover:text-amber-400 transition-colors">作品展示</a>
-                    <a href="#exhibitions" class="text-stone-200 hover:text-amber-400 transition-colors">展览现场</a>
-                    <a href="#honors" class="text-stone-200 hover:text-amber-400 transition-colors">荣誉奖项</a>
-                    <a href="#about" class="text-stone-200 hover:text-amber-400 transition-colors">艺术简介</a>
-                    <a href="#contact" class="text-stone-200 hover:text-amber-400 transition-colors">联系方式</a>
+    <header class="bg-stone-900 text-white">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <img src="images/exhibitions/书法公益活动.jpg" alt="刘从东" class="w-20 h-20 rounded-full border-2 border-amber-400 object-cover mr-4">
+                    <div>
+                        <h1 class="text-2xl md:text-3xl font-bold text-amber-400 calligraphy-font">刘从东书法作品网</h1>
+                        <div class="flex flex-wrap gap-2 mt-2">
+                            <span class="text-xs px-2 py-1 bg-amber-600 rounded">书法家</span>
+                            <span class="text-xs px-2 py-1 bg-amber-600 rounded">艺术协会会员</span>
+                            <span class="text-xs px-2 py-1 bg-amber-600 rounded">书法导师</span>
+                        </div>
+                    </div>
                 </div>
-                <button id="mobile-menu-btn" class="md:hidden text-stone-200 text-2xl">&#9776;</button>
+                <div class="text-right">
+                    <p class="text-sm text-stone-300">笔耕不辍，墨润初心</p>
+                </div>
             </div>
-            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2 bg-stone-900 bg-opacity-95 rounded-lg p-4">
-                <a href="#home" class="block text-stone-200 hover:text-amber-400 transition-colors py-2">首页</a>
-                <a href="#works" class="block text-stone-200 hover:text-amber-400 transition-colors py-2">作品展示</a>
-                <a href="#exhibitions" class="block text-stone-200 hover:text-amber-400 transition-colors py-2">展览现场</a>
-                <a href="#honors" class="block text-stone-200 hover:text-amber-400 transition-colors py-2">荣誉奖项</a>
-                <a href="#about" class="block text-stone-200 hover:text-amber-400 transition-colors py-2">艺术简介</a>
-                <a href="#contact" class="block text-stone-200 hover:text-amber-400 transition-colors py-2">联系方式</a>
-            </div>
-        </nav>
+        </div>
     </header>
 
-    <section id="home" class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23d4af37\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+    <nav class="bg-stone-800 text-white shadow-md">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center">
+                <div class="hidden md:flex space-x-6">
+                    <a href="#home" class="py-4 px-2 text-amber-400 border-b-2 border-amber-400">首页</a>
+                    <a href="#works" class="py-4 px-2 hover:text-amber-400 transition-colors">经典作品</a>
+                    <a href="#exhibitions" class="py-4 px-2 hover:text-amber-400 transition-colors">活动资讯</a>
+                    <a href="#about" class="py-4 px-2 hover:text-amber-400 transition-colors">艺术简介</a>
+                    <a href="#honors" class="py-4 px-2 hover:text-amber-400 transition-colors">资质证书</a>
+                    <a href="#contact" class="py-4 px-2 hover:text-amber-400 transition-colors">联系方式</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-white text-2xl py-4">&#9776;</button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden space-y-2 bg-stone-900 bg-opacity-95 rounded-lg p-4">
+                <a href="#home" class="block text-white hover:text-amber-400 transition-colors py-2">首页</a>
+                <a href="#works" class="block text-white hover:text-amber-400 transition-colors py-2">经典作品</a>
+                <a href="#exhibitions" class="block text-white hover:text-amber-400 transition-colors py-2">活动资讯</a>
+                <a href="#about" class="block text-white hover:text-amber-400 transition-colors py-2">艺术简介</a>
+                <a href="#honors" class="block text-white hover:text-amber-400 transition-colors py-2">资质证书</a>
+                <a href="#contact" class="block text-white hover:text-amber-400 transition-colors py-2">联系方式</a>
+            </div>
         </div>
-        <div class="relative z-10 text-center px-6">
-            <div class="mb-8 animate-fade-in-up">
-                <div class="w-40 h-40 mx-auto mb-6 rounded-full border-4 border-amber-400 flex items-center justify-center bg-stone-800 shadow-2xl">
-                    <span class="text-7xl text-amber-400 calligraphy-font">书</span>
+    </nav>
+
+    <section id="home" class="py-16 bg-chinese-pattern">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 左侧个人简介 -->
+                <div class="md:col-span-1">
+                    <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                        <h2 class="text-2xl font-bold text-stone-800 mb-4 calligraphy-font">艺术简介</h2>
+                        <div class="border-l-4 border-amber-500 pl-4 mb-4">
+                            <p class="text-stone-700 leading-relaxed">
+                                刘从东，自幼研习书法，擅长楷书、行书，多次荣获省级国家级奖项，作品多次参展。
+                            </p>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <span class="text-amber-600 mr-2">•</span>
+                                <span class="text-stone-700">自幼研习书法，基础深厚</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-amber-600 mr-2">•</span>
+                                <span class="text-stone-700">擅长楷书、行书等多种书体</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-amber-600 mr-2">•</span>
+                                <span class="text-stone-700">多次荣获省级国家级书法奖项</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-amber-600 mr-2">•</span>
+                                <span class="text-stone-700">作品多次参加国内外展览</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h2 class="text-2xl font-bold text-stone-800 mb-4 calligraphy-font">书法理念</h2>
+                        <p class="text-stone-700 leading-relaxed">
+                            书法是中华民族的传统艺术瑰宝，承载着深厚的文化底蕴。我始终坚持传统与创新相结合，在继承古人笔法的基础上，融入现代审美理念，追求书法艺术的更高境界。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 右侧作品展示 -->
+                <div class="md:col-span-2">
+                    <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-2xl font-bold text-stone-800 calligraphy-font">经典作品</h2>
+                            <a href="#works" class="text-amber-600 hover:text-amber-800 transition-colors">更多 &gt;</a>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="work-item group relative overflow-hidden rounded-lg shadow cursor-pointer">
+                                <img src="images/works/北国风光.jpg" alt="行书《北国风光》" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
+                                    <h3 class="text-white font-bold">行书《北国风光》</h3>
+                                </div>
+                            </div>
+                            <div class="work-item group relative overflow-hidden rounded-lg shadow cursor-pointer">
+                                <img src="images/works/天道酬勤.jpg" alt="楷书《天道酬勤》" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
+                                    <h3 class="text-white font-bold">楷书《天道酬勤》</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-2xl font-bold text-stone-800 calligraphy-font">最新活动</h2>
+                            <a href="#exhibitions" class="text-amber-600 hover:text-amber-800 transition-colors">更多 &gt;</a>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <img src="images/exhibitions/十笏园个人书法展海报.jpg" alt="十笏园个人书法展" class="w-24 h-24 object-cover rounded mr-4">
+                                <div>
+                                    <h3 class="font-bold text-stone-800">十笏园个人书法展圆满举行</h3>
+                                    <p class="text-stone-600 text-sm mt-1">2026年3月，刘从东个人书法展在十笏园成功举办，展出作品50余幅，受到广泛好评。</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <img src="images/exhibitions/北京银行书法活动.jpg" alt="北京银行书法活动" class="w-24 h-24 object-cover rounded mr-4">
+                                <div>
+                                    <h3 class="font-bold text-stone-800">北京银行书法文化活动</h3>
+                                    <p class="text-stone-600 text-sm mt-1">2026年2月，刘从东应邀参加北京银行举办的书法文化活动，现场创作书法作品。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <h1 class="text-6xl md:text-8xl font-bold text-amber-400 mb-6 animate-fade-in-up calligraphy-font" style="animation-delay: 0.2s;">刘从东</h1>
-            <p class="text-2xl md:text-3xl text-stone-300 mb-4 animate-fade-in-up" style="animation-delay: 0.4s;">个人书法作品展示</p>
-            <div class="w-32 h-1 bg-amber-400 mx-auto mb-8 animate-fade-in-up" style="animation-delay: 0.6s;"></div>
-            <p class="text-xl md:text-2xl text-amber-300 max-w-3xl mx-auto mb-8 animate-fade-in-up calligraphy-font" style="animation-delay: 0.8s;">
-                笔耕不辍，墨润初心
-            </p>
-            <div class="animate-fade-in-up" style="animation-delay: 1s;">
-                <a href="#works" class="inline-block px-10 py-4 bg-amber-600 hover:bg-amber-700 text-white text-lg font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl">
-                    浏览作品
-                </a>
-            </div>
-        </div>
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <svg class="w-10 h-10 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-            </svg>
         </div>
     </section>
 
     <section id="works" class="py-20 bg-stone-100">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl md:text-6xl font-bold text-stone-800 mb-4 calligraphy-font">作品展示</h2>
-                <div class="w-32 h-1 bg-amber-600 mx-auto mb-6"></div>
-                <p class="text-stone-600 text-lg max-w-2xl mx-auto">精选书法作品，展现传统书法艺术的魅力</p>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-5xl lg:text-6xl font-bold text-stone-800 mb-4 calligraphy-font">经典作品</h2>
+                <div class="w-24 md:w-32 h-1 bg-amber-600 mx-auto mb-4 md:mb-6"></div>
+                <p class="text-stone-600 text-base md:text-lg max-w-2xl mx-auto">精选书法作品，展现传统书法艺术的魅力</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="works-grid">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="works-grid">
                 <!-- 作品图片将通过JavaScript动态加载 -->
             </div>
         </div>
@@ -102,35 +200,22 @@
 
     <section id="exhibitions" class="py-20 bg-stone-800">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl md:text-6xl font-bold text-amber-400 mb-4 calligraphy-font">展览现场</h2>
-                <div class="w-32 h-1 bg-amber-600 mx-auto mb-6"></div>
-                <p class="text-stone-300 text-lg max-w-2xl mx-auto">书法展览活动现场记录</p>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-5xl lg:text-6xl font-bold text-amber-400 mb-4 calligraphy-font">活动资讯</h2>
+                <div class="w-24 md:w-32 h-1 bg-amber-600 mx-auto mb-4 md:mb-6"></div>
+                <p class="text-stone-300 text-base md:text-lg max-w-2xl mx-auto">书法展览活动现场记录</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="exhibitions-grid">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="exhibitions-grid">
                 <!-- 展览图片将通过JavaScript动态加载 -->
-            </div>
-        </div>
-    </section>
-
-    <section id="honors" class="py-20 bg-stone-100">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl md:text-6xl font-bold text-stone-800 mb-4 calligraphy-font">荣誉奖项</h2>
-                <div class="w-32 h-1 bg-amber-600 mx-auto mb-6"></div>
-                <p class="text-stone-600 text-lg max-w-2xl mx-auto">获得的荣誉与成就</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="honors-grid">
-                <!-- 荣誉图片将通过JavaScript动态加载 -->
             </div>
         </div>
     </section>
 
     <section id="about" class="py-20 bg-stone-800">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl md:text-6xl font-bold text-amber-400 mb-4 calligraphy-font">艺术简介</h2>
-                <div class="w-32 h-1 bg-amber-600 mx-auto mb-6"></div>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-5xl lg:text-6xl font-bold text-amber-400 mb-4 calligraphy-font">艺术简介</h2>
+                <div class="w-24 md:w-32 h-1 bg-amber-600 mx-auto mb-4 md:mb-6"></div>
             </div>
             <div class="max-w-4xl mx-auto">
                 <div class="bg-stone-700 rounded-lg p-8 md:p-12 shadow-2xl">
@@ -172,35 +257,54 @@
         </div>
     </section>
 
+    <section id="honors" class="py-20 bg-stone-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-5xl lg:text-6xl font-bold text-stone-800 mb-4 calligraphy-font">资质证书</h2>
+                <div class="w-24 md:w-32 h-1 bg-amber-600 mx-auto mb-4 md:mb-6"></div>
+                <p class="text-stone-600 text-base md:text-lg max-w-2xl mx-auto">获得的荣誉与成就</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="honors-grid">
+                <!-- 荣誉图片将通过JavaScript动态加载 -->
+            </div>
+        </div>
+    </section>
+
     <section id="contact" class="py-20 bg-stone-100">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl md:text-6xl font-bold text-stone-800 mb-4 calligraphy-font">联系方式</h2>
-                <div class="w-32 h-1 bg-amber-600 mx-auto mb-6"></div>
-                <p class="text-stone-600 text-lg max-w-2xl mx-auto">欢迎与我联系，共同探讨书法艺术</p>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-5xl lg:text-6xl font-bold text-stone-800 mb-4 calligraphy-font">联系方式</h2>
+                <div class="w-24 md:w-32 h-1 bg-amber-600 mx-auto mb-4 md:mb-6"></div>
+                <p class="text-stone-600 text-base md:text-lg max-w-2xl mx-auto">欢迎与我联系，共同探讨书法艺术</p>
             </div>
-            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-lg shadow-lg p-8 text-center transform hover:scale-105 transition-all duration-300">
-                    <div class="w-20 h-20 mx-auto mb-4 bg-amber-100 rounded-full flex items-center justify-center">
-                        <span class="text-4xl">📱</span>
+            <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-white rounded-lg shadow-lg p-6 text-center transform hover:scale-105 transition-all duration-300">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-amber-100 rounded-full flex items-center justify-center">
+                        <span class="text-3xl">📱</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-stone-800 mb-3">电话</h3>
-                    <p class="text-stone-600 text-lg">138-0000-0000</p>
+                    <h3 class="text-xl font-bold text-stone-800 mb-2">电话</h3>
+                    <p class="text-stone-600">13011671853</p>
                 </div>
-                <div class="bg-white rounded-lg shadow-lg p-8 text-center transform hover:scale-105 transition-all duration-300">
-                    <div class="w-20 h-20 mx-auto mb-4 bg-amber-100 rounded-full flex items-center justify-center">
-                        <span class="text-4xl">💬</span>
+                <div class="bg-white rounded-lg shadow-lg p-6 text-center transform hover:scale-105 transition-all duration-300">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-amber-100 rounded-full flex items-center justify-center">
+                        <span class="text-3xl">�</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-stone-800 mb-3">微信</h3>
-                    <p class="text-stone-600 text-lg">liucongdong_art</p>
-                    <p class="text-stone-500 text-sm mt-2">（可添加微信二维码图片）</p>
+                    <h3 class="text-xl font-bold text-stone-800 mb-2">邮箱</h3>
+                    <p class="text-stone-600">liucongdong_art@qq.com</p>
                 </div>
-                <div class="bg-white rounded-lg shadow-lg p-8 text-center transform hover:scale-105 transition-all duration-300">
-                    <div class="w-20 h-20 mx-auto mb-4 bg-amber-100 rounded-full flex items-center justify-center">
-                        <span class="text-4xl">📍</span>
+                <div class="bg-white rounded-lg shadow-lg p-6 text-center transform hover:scale-105 transition-all duration-300">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-amber-100 rounded-full flex items-center justify-center">
+                        <span class="text-3xl">💬</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-stone-800 mb-3">地址</h3>
-                    <p class="text-stone-600 text-lg">山东省潍坊市</p>
+                    <h3 class="text-xl font-bold text-stone-800 mb-2">微信</h3>
+                    <p class="text-stone-600">liucongdong_art</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 text-center transform hover:scale-105 transition-all duration-300">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-amber-100 rounded-full flex items-center justify-center">
+                        <span class="text-3xl">📍</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-stone-800 mb-2">地址</h3>
+                    <p class="text-stone-600">山东省潍坊市</p>
                 </div>
             </div>
         </div>
@@ -215,9 +319,9 @@
 
     <script src="js/main.js"></script>
     <script>
-        // 动态加载图片
+        // 动态加载图片和视频
         document.addEventListener('DOMContentLoaded', function() {
-            // 加载作品图片
+            // 加载作品图片和视频
             fetch('images_data.json')
                 .then(response => response.json())
                 .then(data => {
@@ -226,14 +330,33 @@
                     data.works.forEach(work => {
                         const div = document.createElement('div');
                         div.className = 'work-item group relative overflow-hidden rounded-lg shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300';
-                        div.innerHTML = `
-                            <img src="images/works/${work.filename}" alt="${work.name}" class="w-full h-64 object-cover" loading="lazy">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-100 flex items-end p-6">
-                                <div class="text-white">
-                                    <h3 class="text-xl font-bold mb-2">${work.name}</h3>
+                        
+                        // 检查是否是视频文件
+                        if (work.filename.endsWith('.mp4')) {
+                            div.innerHTML = `
+                                <div class="relative">
+                                    <div class="video-container">
+                                        <video src="images/works/${work.filename}" class="w-full h-64 object-cover" controls></video>
+                                    </div>
+                                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3 sm:p-4">
+                                    <div class="text-amber-400">
+                                        <h3 class="text-sm sm:text-base font-bold">${work.name}</h3>
+                                    </div>
                                 </div>
-                            </div>
-                        `;
+                                </div>
+                            `;
+                        } else {
+                            div.innerHTML = `
+                                <div class="relative">
+                                    <img src="images/works/${work.filename}" alt="${work.name}" class="w-full h-64 object-cover" loading="lazy">
+                                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3 sm:p-4">
+                                    <div class="text-amber-400">
+                                        <h3 class="text-sm sm:text-base font-bold">${work.name}</h3>
+                                    </div>
+                                </div>
+                                </div>
+                            `;
+                        }
                         worksGrid.appendChild(div);
                     });
 
@@ -242,14 +365,33 @@
                     data.exhibitions.forEach(exhibition => {
                         const div = document.createElement('div');
                         div.className = 'exhibition-item group relative overflow-hidden rounded-lg shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300';
-                        div.innerHTML = `
-                            <img src="images/exhibitions/${exhibition.filename}" alt="${exhibition.name}" class="w-full h-64 object-cover" loading="lazy">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-100 flex items-end p-6">
-                                <div class="text-white">
-                                    <h3 class="text-xl font-bold mb-2">${exhibition.name}</h3>
+                        
+                        // 检查是否是视频文件
+                        if (exhibition.filename.endsWith('.mp4')) {
+                            div.innerHTML = `
+                                <div class="relative">
+                                    <div class="video-container">
+                                        <video src="images/exhibitions/${exhibition.filename}" class="w-full h-64 object-cover" controls></video>
+                                    </div>
+                                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                                        <div class="text-white">
+                                            <h3 class="text-lg font-bold">${exhibition.name}</h3>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        `;
+                            `;
+                        } else {
+                            div.innerHTML = `
+                                <div class="relative">
+                                    <img src="images/exhibitions/${exhibition.filename}" alt="${exhibition.name}" class="w-full h-64 object-cover" loading="lazy">
+                                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                                        <div class="text-white">
+                                            <h3 class="text-lg font-bold">${exhibition.name}</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        }
                         exhibitionsGrid.appendChild(div);
                     });
 
