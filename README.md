@@ -72,7 +72,8 @@ http://localhost:8080
 
 ## 联系方式
 
-- 电话：138-0000-0000
+- 电话：13011671853
+- 邮箱：liucongdong_art@qq.com
 - 微信：liucongdong_art
 - 地址：山东省潍坊市
 
